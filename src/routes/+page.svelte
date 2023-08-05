@@ -1,5 +1,8 @@
 <script lang="ts">
   import Form from "$lib/components/Form.svelte";
+
+  import type { PageData } from "./$types";
+
   import SunIcon from "$lib/components/Sun.svelte";
   import MoonIcon from "$lib/components/Moon.svelte";
   import { theme } from "$lib/stores/theme";
@@ -13,7 +16,6 @@
     theme.set(currentTheme);
   }
 
-  import type { PageData } from "./$types";
   export let data: PageData;
 </script>
 

@@ -1,9 +1,13 @@
 <script lang="ts">
+  import HowTo from "./HowTo.svelte";
+
   let total = "";
 
   let partner = false;
   let productValue = 0;
   let freightValue = 0;
+
+  let difference = 0;
 
   export let dollar: number;
 
@@ -78,6 +82,12 @@
       />
     </div>
   </div>
+  <HowTo
+    dollar={dollar.toFixed(2)}
+    icms={ICMS}
+    taxaCorreios={CORREIOS_TAXA}
+    impostoDeImportacao={IMPOSTO_DE_IMPORTACAO}
+  />
 </div>
 
 <div class="flex flex-auto gap-5 flex-col">

@@ -1,6 +1,6 @@
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = async () => {
+export const load: PageLoad = async ({ fetch }) => {
   const response = await fetch('https://open.er-api.com/v6/latest/USD');
 
   const data = await response.json();

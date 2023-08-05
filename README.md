@@ -1,6 +1,5 @@
 # TODO
 
-- Mostrar como faz a conta
 - Simular outro valor de dolar
 - Mostrar a diferença entre parceiro ou nao
 
