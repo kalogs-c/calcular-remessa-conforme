@@ -17,6 +17,33 @@
   }
 
   export let data: PageData;
+
+  const empresas = {
+    dentro: [
+      "3Cliques",
+      "Aliexpress",
+      "Amazon",
+      "Magazine Luiza",
+      "Mercado Livre",
+      "Shein",
+      "Shopee",
+      "Sinerlog Store",
+      "Temu",
+    ],
+    fora: [
+      "Wish",
+      "US Closer",
+      "Tiendamia",
+      "Puritan",
+      "Muifabrica",
+      "LifeOne",
+      "IHerb",
+      "Fornececlub",
+      "Cronosco",
+      "Cellshop",
+      "Addmall",
+    ],
+  } as const;
 </script>
 
 <section class="main-container" data-theme={currentTheme}>
@@ -95,6 +122,54 @@
       e pagos antes de chegarem ao Brasil, o que agiliza as liberações e as
       entregas das mercadorias.
     </p>
+    <h2>Já estão no programa</h2>
+    <ol
+      class="daisy-menu flex-row gap-2 rounded-box w-full max-w-sm max-h-64 z-[10] m-2"
+    >
+      {#each empresas.dentro as empresa}
+        <li>
+          <strong>
+            {empresa}
+          </strong>
+        </li>
+      {/each}
+    </ol>
+    <h2>Ainda não estão no programa</h2>
+    <ol
+      class="daisy-menu flex-row gap-2 rounded-box w-full max-w-md max-h-64 z-[10] m-2"
+    >
+      {#each empresas.fora as empresa}
+        <li>
+          <strong>
+            {empresa}
+          </strong>
+        </li>
+      {/each}
+    </ol>
+    <h2>Leia mais</h2>
+    <div class="flex">
+      <a
+        href="https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/manuais/remessas-postal-e-expressa/programa-remessa-conforme-o-que-e-como-funciona"
+        target="_blank"
+      >
+        Programa remessa conforme 2023</a
+      >
+      <div class="daisy-divider daisy-divider-horizontal"></div>
+      <a
+        href="https://www.gov.br/receitafederal/pt-br/assuntos/aduana-e-comercio-exterior/manuais/remessas-postal-e-expressa/regras-futuras/regras-futuras"
+        target="_blank"
+      >
+        Atualizações do programa em 2024
+      </a>
+      <div class="daisy-divider daisy-divider-horizontal"></div>
+      <a
+        href="https://g1.globo.com/economia/noticia/2024/07/18/encomendas-internacionais-veja-empresas-que-estao-no-programa-da-receita-federal-e-as-que-buscam-habilitacao.ghtml"
+        target="_blank"
+      >
+        Empresas que estão no programa da Receita Federal e as que buscam
+        habilitação
+      </a>
+    </div>
   </section>
   <footer
     class="mt-16 flex items-center justify-center w-full footer footer-center bg-base-300 text-base-content p-4"
@@ -117,8 +192,8 @@
   }
 
   .form {
-    @apply flex flex-col items-center justify-center;
-    height: calc(100vh - 255px);
+    @apply flex flex-col items-center justify-center my-5;
+    height: calc(100vh - 100px);
   }
 
   h2 {
@@ -127,5 +202,9 @@
 
   p {
     @apply text-xl leading-normal m-auto w-11/12;
+  }
+
+  a {
+    @apply daisy-link;
   }
 </style>
