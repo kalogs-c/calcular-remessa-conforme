@@ -1,7 +1,7 @@
 <script lang="ts">
   import HowTo from "./HowTo.svelte";
 
-  let total = "";
+  let total = "0.00";
 
   let partner = false;
   let productValue = 0;
@@ -20,7 +20,7 @@
 
   function calculate() {
     if (productValue + freightValue === 0) {
-      total = "";
+      total = "0.00";
       return;
     }
 
@@ -47,7 +47,7 @@
     <label
       class="daisy-label cursor-pointer flex items-center justify-between gap-3"
     >
-      <span class="label-text"> Empresa dentro da remessa conforme </span>
+      <span class="daisy-label-text"> Empresa dentro da remessa conforme </span>
       <input
         bind:checked={partner}
         on:change={calculate}
@@ -91,22 +91,20 @@
 </div>
 
 <div class="flex flex-auto gap-5 flex-col">
-  {#if total}
-    <div class="daisy-stats daisy-stats-vertical lg:daisy-stats-horizontal">
-      <div class="daisy-stat">
-        <div class="daisy-stat-title">Produto + Frete</div>
-        <div class="daisy-stat-value">
-          R$ {(productValue + freightValue).toFixed(2)}
-        </div>
-      </div>
-      <div class="daisy-stat">
-        <div class="daisy-stat-title">Dolar</div>
-        <div class="daisy-stat-value">R$ {dollar.toFixed(2)}</div>
-      </div>
-      <div class="daisy-stat">
-        <div class="daisy-stat-title">Total</div>
-        <div class="daisy-stat-value text-primary">R$ {total}</div>
+  <div class="daisy-stats daisy-stats-vertical lg:daisy-stats-horizontal">
+    <div class="daisy-stat">
+      <div class="daisy-stat-title">Produto + Frete</div>
+      <div class="daisy-stat-value">
+        R$ {(productValue + freightValue).toFixed(2)}
       </div>
     </div>
-  {/if}
+    <div class="daisy-stat">
+      <div class="daisy-stat-title">Dolar</div>
+      <div class="daisy-stat-value">R$ {dollar.toFixed(2)}</div>
+    </div>
+    <div class="daisy-stat">
+      <div class="daisy-stat-title">Total</div>
+      <div class="daisy-stat-value text-primary">R$ {total}</div>
+    </div>
+  </div>
 </div>
