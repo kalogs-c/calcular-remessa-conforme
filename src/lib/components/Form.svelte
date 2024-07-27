@@ -7,13 +7,14 @@
   let productValue = 0;
   let freightValue = 0;
 
-  let difference = 0;
-
   export let dollar: number;
 
   // Em porcentagem
-  const IMPOSTO_DE_IMPORTACAO = 60;
-  const ICMS = 17;
+  const IMPOSTO_DE_IMPORTACAO = {
+    ABAIXO_50_DOL: 20 / 100,
+    ACIMA_50_DOL: 60 / 100,
+  } as const;
+  const ICMS = 17 / 100;
 
   // Em R$
   const CORREIOS_TAXA = 15;
@@ -25,15 +26,26 @@
     }
 
     const value = productValue + freightValue;
+
     let currentTotal = value;
 
+    if (value / dollar <= 50) {
+      const abaixo50Dol = value * IMPOSTO_DE_IMPORTACAO.ABAIXO_50_DOL;
+
+      // Imposto de Importação para compras abaixo de 50 dol
+      currentTotal += abaixo50Dol;
+    }
+
     if (value / dollar > 50 || !partner) {
+      const descount = 20;
+      const acima50Dol = value * IMPOSTO_DE_IMPORTACAO.ACIMA_50_DOL - descount;
+
       // Imposto de Importação para compras acima de 50 dol
-      currentTotal += (value * IMPOSTO_DE_IMPORTACAO) / 100;
+      currentTotal += acima50Dol;
     }
 
     // ICMS
-    currentTotal += (currentTotal * ICMS) / 100;
+    currentTotal += currentTotal * ICMS;
 
     // Taxa correios
     currentTotal += CORREIOS_TAXA;
@@ -103,7 +115,11 @@
       <div class="daisy-stat-value">R$ {dollar.toFixed(2)}</div>
     </div>
     <div class="daisy-stat">
-      <div class="daisy-stat-title">Total</div>
+      <div class="daisy-stat-title">
+        Total ({productValue + freightValue / dollar > 50
+          ? "acima de $50"
+          : "abaixo de $50"})
+      </div>
       <div class="daisy-stat-value text-primary">R$ {total}</div>
     </div>
   </div>

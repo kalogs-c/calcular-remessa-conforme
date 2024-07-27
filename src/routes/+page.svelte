@@ -93,7 +93,7 @@
       feitas na internet de até US$ 50. A medida foi implementada por uma
       portaria publicada em junho de 2023 pelo Ministério da Fazenda.
     </p>
-    <h2>Nova taxa</h2>
+    <h2>Nova taxa "imposto das blusinhas"</h2>
     <p>
       A partir de agosto de 2024 os produtos importados passarão a ser taxados
       duas vezes, com o novo imposto federal e com o ICMS. Serão cobradas duas

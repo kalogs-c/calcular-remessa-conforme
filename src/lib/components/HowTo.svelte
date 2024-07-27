@@ -1,7 +1,7 @@
 <script lang="ts">
   export let dollar: string;
   export let taxaCorreios: number;
-  export let impostoDeImportacao: number;
+  export let impostoDeImportacao: Record<string, number>;
   export let icms: number;
 </script>
 
@@ -16,15 +16,21 @@
         Primeiro somamos o valor do produto com o do frete
       </li>
       <li class="daisy-step">
+        Para produtos cujo o valor seja menor que US$50,00 dólares na cotação
+        atual (R$ {dollar}), adicionamos a taxa de importação ({impostoDeImportacao.ABAIXO_50_DOL *
+          100}%).
+      </li>
+      <li class="daisy-step">
         Se o valor total for maior que US$50,00 dólares na cotação atual (R$ {dollar}),
-        adicionamos a taxa de importação ({impostoDeImportacao}%).
+        adicionamos a taxa de importação para produtos acima de 50 dólares ({impostoDeImportacao.ACIMA_50_DOL *
+          100}%). É aplicado um desconto de US$ 20 dólares ao valor da taxa.
       </li>
       <li class="daisy-step">
         Se a empresa não fizer parte da remessa, adicionamos a taxa de
         importação independentemente do valor.
       </li>
       <li class="daisy-step">
-        Acrescentamos o ICMS ({icms}%) sobre o valor anterior.
+        Acrescentamos o ICMS ({icms * 100}%) sobre o valor anterior.
       </li>
       <li class="daisy-step daisy-step-primary">
         Por último, incluímos a taxa de despacho dos Correios que é um valor
